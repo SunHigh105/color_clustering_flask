@@ -1,0 +1,11 @@
+{
+    "dev": {
+        "app_function": "app.app",
+        "aws_region": "ap-northeast-1",
+        "profile_name": "default",
+        "project_name": "color_clustering_flask",
+        "runtime": "python3.8",
+        "s3_bucket": "color-clustering-spa",
+        "slim_handler": true
+    }
+}

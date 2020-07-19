@@ -1,0 +1,27 @@
+.DS_Store
+frontend/node_modules/
+dist/
+
+# local env files
+.env.local
+.env.*.local
+
+# Log files
+frontend/fronpm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+frontend/pnpm-debug.log*
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# S3 bucket setting file
+config.py
+
+tmp/*
