@@ -31,7 +31,11 @@
           </div>
         </div>
         <div class="color-bar">
-          <div v-for="row in colorList" v-bind:key="row.index" v-bind:style="'background-color: rgb(' + row[0] + ',' + row[1] + ',' + row[2] + ')'"></div>
+          <div 
+            v-for="row in colorList" 
+            v-bind:key="row.index" 
+            v-bind:style="'background-color: rgb(' + row[0] + ',' + row[1] + ',' + row[2] + ')'"
+          ></div>
         </div>
   </div>
 </template>
@@ -46,7 +50,8 @@ export default {
       fileType: '',
       cluster: 1,
       loading: false,
-      colorList: []
+      colorList: [],
+      histogram: []
     }
   },
   methods: {
@@ -74,6 +79,8 @@ export default {
           this.loading = false
           alert('File Upload Success!')
           this.colorList = response.data['color_list']
+          this.histogram = response.data['histogram']
+          console.log(this.histogram)
         })
         .catch(error => {
           this.loading = false

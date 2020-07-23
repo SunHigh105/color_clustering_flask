@@ -45,6 +45,17 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 def catch(path):
     return render_template("index.html")
 
+# クラスタごとの割合を計算
+def centroid_histgram(clt):
+  # clt.labels_ ... 各ピクセルが何番目のクラスタに属するか
+  numLabels = np.arange(0, len(np.unique(clt.labels_)) + 1)
+  # ヒストグラムを計算
+  (hist, _) = np.histogram(clt.labels_, bins = numLabels)
+  hist = hist.astype('float')
+  hist /= hist.sum() / 100
+  return hist
+
+# クラスタリング実行
 def color_clustering(filename, k):
     if filename != '':
         file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
@@ -55,20 +66,8 @@ def color_clustering(filename, k):
         # k-means方でクラスタリング
         cluster = KMeans(n_clusters=k)
         cluster.fit(X=cv2_img)
-        KMeans(
-            algorithm='auto', 
-            copy_x=True, 
-            init='k-means++', 
-            max_iter=300,
-            n_init=10, 
-            n_jobs=1, 
-            precompute_distances='auto',
-            random_state=None, 
-            tol=0.0001, 
-            verbose=0
-        )
         result = cluster.cluster_centers_.astype(int)
-        return result.tolist()
+        return {'color_list': result.tolist(), 'histogram': centroid_histgram(cluster).tolist()}
 
 @app.route('/display_img', methods=['POST'])
 def display_img():
@@ -96,11 +95,13 @@ def upload_file():
             ContentType=request.form['filetype']
         )
         # クラスタリング実行
+        '''
         response = {
             'fileName': filename,
             'color_list': color_clustering(filename, int(request.form['cluster']))
         }
-        return jsonify(response)
+        '''
+        return jsonify(color_clustering(filename, int(request.form['cluster'])))
 
 # We only need this for local development.
 if __name__ == '__main__':
