@@ -10,8 +10,14 @@
         <div class="file-upload__form">
           <form method="post" enctype="multipart/form-data">
             <p>
-                <input @change="selectedFile" type="file" name ="file" id="file">
+              <input @change="selectedFile" type="file" name ="file" id="file">
             </p>
+            <p>
+              Cluster
+              <select v-model="cluster" name="cluster">
+                <option v-for="n in 5" v-bind:key="n.index" v-bind:value="n">{{ n }}</option>
+              </select>
+            </p> 
             <p>
               <button @click="upload" type="button">Upload</button>
             </p>
@@ -38,6 +44,7 @@ export default {
       uploadFile: null,
       fileName: '',
       fileType: '',
+      cluster: 1,
       loading: false,
       colorList: []
     }
@@ -56,7 +63,7 @@ export default {
       params.append('file', this.uploadFile)
       params.append('filename', this.fileName)
       params.append('filetype', this.fileName)
-      // loading on
+      params.append('cluster', this.cluster)
       this.loading = true
       axios.post('/uploads', params, {
         headers: {
@@ -66,10 +73,7 @@ export default {
         .then(response => {
           this.loading = false
           alert('File Upload Success!')
-          console.log(response)
           this.colorList = response.data['color_list']
-          // redirect ro list page
-          // document.location = '/list'
         })
         .catch(error => {
           this.loading = false
