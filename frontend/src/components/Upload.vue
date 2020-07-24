@@ -80,7 +80,7 @@ export default {
           this.colorList = []
           response.data['color_list'].forEach((r, i) => {
             this.colorList.push({
-              'color_list': r,q
+              'color_list': r,
               'histogram': response.data['histogram'][i]
             })
           })
