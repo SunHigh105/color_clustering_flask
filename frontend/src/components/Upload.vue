@@ -34,7 +34,7 @@
           <div 
             v-for="row in colorList" 
             v-bind:key="row.index" 
-            v-bind:style="'background-color: rgb(' + row[0] + ',' + row[1] + ',' + row[2] + ')'"
+            v-bind:style="'background-color: rgb(' + row['color_list'][0] + ',' + row['color_list'][1] + ',' + row['color_list'][2] + '); width:' + row['histogram'] + '%;'"
           ></div>
         </div>
   </div>
@@ -51,7 +51,6 @@ export default {
       cluster: 1,
       loading: false,
       colorList: [],
-      histogram: []
     }
   },
   methods: {
@@ -78,9 +77,13 @@ export default {
         .then(response => {
           this.loading = false
           alert('File Upload Success!')
-          this.colorList = response.data['color_list']
-          this.histogram = response.data['histogram']
-          console.log(this.histogram)
+          this.colorList = []
+          response.data['color_list'].forEach((r, i) => {
+            this.colorList.push({
+              'color_list': r,q
+              'histogram': response.data['histogram'][i]
+            })
+          })
         })
         .catch(error => {
           this.loading = false

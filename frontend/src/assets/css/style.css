@@ -102,9 +102,10 @@ nav > ul > li > a {
 
 .color-bar {
     display: flex;
+    width: 80%;
+    margin: 0 auto;
 }
 
 .color-bar div {
-    width: 20%;
-    height: 50px;
+    height: 100px;
 }

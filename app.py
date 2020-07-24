@@ -95,12 +95,6 @@ def upload_file():
             ContentType=request.form['filetype']
         )
         # クラスタリング実行
-        '''
-        response = {
-            'fileName': filename,
-            'color_list': color_clustering(filename, int(request.form['cluster']))
-        }
-        '''
         return jsonify(color_clustering(filename, int(request.form['cluster'])))
 
 # We only need this for local development.
