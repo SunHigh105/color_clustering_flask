@@ -1,42 +1,46 @@
 <template>
-  <div class="file-upload">
-    <h3>File Upload</h3>
-        <div class="loading" v-show="loading">
-          <div class="loading__inner">
-            <h3>Uploading...</h3>
-            <img src="@/assets/icon_loader_f_ww_01_s1.gif">
-          </div>
+  <div>
+    <div class="loading" v-show="loading">
+      <div class="loading__inner">
+        <h3>Uploading...</h3>
+        <img src="@/assets/icon_loader_f_ww_01_s1.gif">
+      </div>
+    </div>
+    <div class="file-upload">
+      <form method="post" enctype="multipart/form-data">
+        <div class="file-upload__row">
+          <p>1. Select image</p>
+          <label for="file">Select image
+            <input @change="selectedFile" type="file" name ="file" id="file">
+          </label>   
         </div>
-        <div class="file-upload__form">
-          <form method="post" enctype="multipart/form-data">
-            <p>
-              <input @change="selectedFile" type="file" name ="file" id="file">
-            </p>
-            <p>
-              Cluster
-              <select v-model="cluster" name="cluster">
-                <option v-for="n in 5" v-bind:key="n.index" v-bind:value="n">{{ n }}</option>
-              </select>
-            </p> 
-            <p>
-              <button @click="upload" type="button">Upload</button>
-            </p>
-          </form>
-          <div class="file-upload__form__prev">
-            <img
-              v-show="uploadFile"
-              :src="uploadFile"
-              alt=""
-            />
-          </div>
+        <div class="file-upload__row">
+          <p>2. Select cluster</p>
+          <select v-model="cluster" name="cluster">
+            <option>Select cluster</option>
+            <option v-for="n in 5" v-bind:key="n.index" v-bind:value="n">{{ n }}</option>
+          </select>
+        </div> 
+        <div class="file-upload__row">
+          <p>3. Upload & Clustering</p>
+          <button @click="upload" type="button">Upload</button>
         </div>
-        <div class="color-bar">
-          <div 
-            v-for="row in colorList" 
-            v-bind:key="row.index" 
-            v-bind:style="'background-color: rgb(' + row['color_list'][0] + ',' + row['color_list'][1] + ',' + row['color_list'][2] + '); width:' + row['histogram'] + '%;'"
-          ></div>
-        </div>
+      </form>
+      <div class="file-upload__prev">
+        <img
+          v-show="uploadFile"
+          :src="uploadFile"
+          alt=""
+        />
+      </div>
+    </div>
+    <div class="color-bar">
+      <div 
+        v-for="row in colorList" 
+        v-bind:key="row.index" 
+        v-bind:style="'background-color: rgb(' + row['color_list'][0] + ',' + row['color_list'][1] + ',' + row['color_list'][2] + '); width:' + row['histogram'] + '%;'"
+      ></div>
+    </div>
   </div>
 </template>
 
