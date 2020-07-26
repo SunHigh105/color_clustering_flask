@@ -1,20 +1,14 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Upload from '@/components/Upload'
-import List from '@/components/List'
 
 Vue.use(VueRouter)
 
   const routes = [
     {
-      path: '/upload',
+      path: '/',
       name: 'Upload',
       component: Upload
-    },
-    {
-      path: '/list',
-      name: 'List',
-      component: List
     }
 ]
 

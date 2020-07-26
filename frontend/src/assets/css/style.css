@@ -49,7 +49,46 @@ nav > ul > li > a {
     width: 50px;
 }
 
-.file-upload__form__prev > img {
+.file-upload {
+    margin-top: 20px;
+}
+
+.file-upload__row {
+    width: 500px;
+    margin: 0 auto;
+}
+
+.file-upload__row > p {
+    display: inline-block;
+    width: 200px;
+    text-align: left;
+}
+
+.file-upload__row > label,
+.file-upload__row > select,
+.file-upload__row > button {
+    background: none;
+    border: 2px solid #e6e6e6;
+    border-radius: 5px;
+    padding: 0.5em 1em;
+    cursor: pointer;
+    width: 150px;
+}
+
+.file-upload__row > label {
+    display: inline-block;
+    width: 115px;
+}
+
+.file-upload__row > label > input {
+    display: none;
+}
+
+.file-upload select > option:first-child {
+    display: none;
+}
+
+.file-upload__prev > img {
     width: 50%;
 }
 
@@ -102,9 +141,10 @@ nav > ul > li > a {
 
 .color-bar {
     display: flex;
+    width: 80%;
+    margin: 0 auto;
 }
 
 .color-bar div {
-    width: 20%;
-    height: 50px;
+    height: 100px;
 }
