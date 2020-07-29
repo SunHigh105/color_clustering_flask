@@ -1,0 +1,8 @@
+boto3
+botocore
+flask
+flask_cors
+numpy
+opencv-python
+Pillow
+scikit-learn

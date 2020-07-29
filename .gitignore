@@ -21,7 +21,4 @@ frontend/pnpm-debug.log*
 *.sln
 *.sw?
 
-# S3 bucket setting file
-config.py
-
-tmp/*
+__pycache__
