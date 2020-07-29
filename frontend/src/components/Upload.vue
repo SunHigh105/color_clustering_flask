@@ -11,7 +11,7 @@
         <div class="file-upload__row">
           <p>1. Select image</p>
           <label for="file">Select image
-            <input @change="selectedFile" type="file" name ="file" id="file">
+            <input @change="selectedFile" type="file" name="file" id="file">
           </label>   
         </div>
         <div class="file-upload__row">
@@ -41,6 +41,12 @@
         v-bind:style="'background-color: rgb(' + row['color_list'][0] + ',' + row['color_list'][1] + ',' + row['color_list'][2] + '); width:' + row['histogram'] + '%;'"
       ></div>
     </div>
+    <div class="color-info">
+      <p v-for="row in colorList"
+        v-bind:key="row.index">
+        <pre>【{{ row['cluster'] }}】R:{{ row['color_list'][0] }}  G:{{ row['color_list'][1] }}  B:{{ row['color_list'][2] }}</pre>
+      </p>
+    </div>
   </div>
 </template>
 
@@ -60,7 +66,6 @@ export default {
   methods: {
     selectedFile (e) {
       let files = e.target.files
-      console.log(files)
       this.createImage(files[0])
       this.uploadFile = files[0]
       this.fileName = files[0].name
@@ -84,6 +89,7 @@ export default {
           this.colorList = []
           response.data['color_list'].forEach((r, i) => {
             this.colorList.push({
+              'cluster': i + 1,
               'color_list': r,
               'histogram': response.data['histogram'][i]
             })

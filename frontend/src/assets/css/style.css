@@ -130,4 +130,12 @@ nav > ul > li > a {
     .color-bar {
         width: 85%;
     }
+
+    .color-info {
+
+    }
+
+    .color-info > p {
+        
+    }
 }
