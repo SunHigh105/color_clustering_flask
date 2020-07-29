@@ -92,53 +92,6 @@ nav > ul > li > a {
     width: 50%;
 }
 
-.file-list__content {
-    list-style: none;
-    padding-inline-start: 0;
-}
-
-.file-list__content > li {
-    border: solid 1px #ccc; 
-    padding: 1em 2em;
-    margin: 1em 0;
-}
-
-.file-list__content__info {
-    list-style: none;
-    display: table;
-    width: 100%;
-    padding-inline-start: 0;
-}
-
-.file-list__content__info > li {
-    display: table-cell;
-    vertical-align: middle;
-    text-align: center;
-    width: 20%;
-}
-
-.file-list__content__info > li > img {
-    width: 100%;
-}
-
-.file-list__content__info li p {
-    padding: 1em 2em;
-}
-
-.file-list__content__info li button {
-    height: 2em;
-    margin: 1em;
-}
-
-.file-list__content__colorbar {
-    display: flex;
-}
-
-.file-list__content__colorbar div {
-    width: 20%;
-    height: 50px;
-}
-
 .color-bar {
     display: flex;
     width: 80%;
