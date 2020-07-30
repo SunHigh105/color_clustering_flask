@@ -102,6 +102,23 @@ nav > ul > li > a {
     height: 100px;
 }
 
+.color-info > table {
+    margin: 20px auto;
+    width: 50%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.color-info > table th {
+    font-weight: bold;
+    border-bottom: 3px solid #e6e6e6;
+    width: 20%;
+}
+
+.color-info > table td {
+    border-bottom: 1px solid #e6e6e6;
+}
+
 @media screen and (max-width: 480px) {
     #app {
         width: 100%;
@@ -127,15 +144,8 @@ nav > ul > li > a {
     }
 
     .file-upload__prev > img,
-    .color-bar {
+    .color-bar,
+    .color-info > table {
         width: 85%;
-    }
-
-    .color-info {
-
-    }
-
-    .color-info > p {
-        
     }
 }

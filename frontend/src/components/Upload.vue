@@ -41,11 +41,25 @@
         v-bind:style="'background-color: rgb(' + row['color_list'][0] + ',' + row['color_list'][1] + ',' + row['color_list'][2] + '); width:' + row['histogram'] + '%;'"
       ></div>
     </div>
-    <div class="color-info">
-      <p v-for="row in colorList"
-        v-bind:key="row.index">
-        <pre>【{{ row['cluster'] }}】R:{{ row['color_list'][0] }}  G:{{ row['color_list'][1] }}  B:{{ row['color_list'][2] }}</pre>
-      </p>
+    <div class="color-info" v-show="colorInfo">
+      <table>
+        <tbody>
+          <tr>
+            <th>Cluster</th>
+            <th>R</th>
+            <th>G</th>
+            <th>B</th>
+            <th>%</th>
+          </tr>
+          <tr v-for="row in colorList" v-bind:key="row.index">
+            <td>{{ row['cluster'] }}</td>
+            <td>{{ row['color_list'][0] }}</td>
+            <td>{{ row['color_list'][1] }}</td>
+            <td>{{ row['color_list'][2] }}</td>
+            <td>{{ row['histogram'] }}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </template>
@@ -60,6 +74,7 @@ export default {
       fileType: '',
       cluster: 1,
       loading: false,
+      colorInfo: false,
       colorList: [],
     }
   },
@@ -84,16 +99,17 @@ export default {
         }
       })
         .then(response => {
-          this.loading = false
           alert('File Upload Success!')
           this.colorList = []
           response.data['color_list'].forEach((r, i) => {
             this.colorList.push({
               'cluster': i + 1,
               'color_list': r,
-              'histogram': response.data['histogram'][i]
+              'histogram': Math.floor(response.data['histogram'][i])
             })
           })
+          this.loading = false
+          this.colorInfo = true
         })
         .catch(error => {
           this.loading = false
