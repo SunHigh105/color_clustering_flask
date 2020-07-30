@@ -50,7 +50,7 @@ nav > ul > li > a {
 }
 
 .file-upload {
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .file-upload__row {
@@ -89,12 +89,12 @@ nav > ul > li > a {
 }
 
 .file-upload__prev > img {
-    width: 50%;
+    width: 40%;
 }
 
 .color-bar {
     display: flex;
-    width: 80%;
+    width: 500px;
     margin: 0 auto;
 }
 
@@ -104,7 +104,7 @@ nav > ul > li > a {
 
 .color-info > table {
     margin: 20px auto;
-    width: 50%;
+    width: 40%;
     border-collapse: collapse;
     text-align: center;
 }
