@@ -18,7 +18,7 @@
           <p>2. Select cluster</p>
           <select v-model="cluster" name="cluster">
             <option>Select cluster</option>
-            <option v-for="n in 5" v-bind:key="n.index" v-bind:value="n">{{ n }}</option>
+            <option v-for="n in 10" v-bind:key="n.index" v-bind:value="n">{{ n }}</option>
           </select>
         </div> 
         <div class="file-upload__row">
