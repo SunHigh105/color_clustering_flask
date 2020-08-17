@@ -19,4 +19,4 @@ boto3 = "*"
 python_version = "3.8"
 
 [scripts]
-app = "python3 app.py"
+main = "python3 main.py"
